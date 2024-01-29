@@ -10,6 +10,7 @@
 
 # source frontend
 /chat-client/dist
+/chat-client/.next
 /chat-client/package-lock.json
 /chat-client/node_modules
 
