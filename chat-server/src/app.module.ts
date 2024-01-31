@@ -8,6 +8,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Chat } from './model/chat.entity';
 import { RoomService } from './room/room.service';
 import { UserService } from './user/user.service';
+import { ChattingController } from './chatting/chatting.controller';
+import { ChattingService } from './chatting/chatting.service';
 
 @Module({
     imports: [
@@ -22,7 +24,7 @@ import { UserService } from './user/user.service';
         }),
         TypeOrmModule.forFeature([Chat]),
     ],
-    controllers: [AppController, UserController, RoomController],
-    providers: [AppService, AppGateway, RoomService, UserService],
+    controllers: [AppController, UserController, RoomController, ChattingController],
+    providers: [AppService, AppGateway, RoomService, UserService, ChattingService],
 })
 export class AppModule { }

@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Chat } from 'src/model/chat.entity';
 import ChatMessageDto from 'src/model/chatMessage.dto';
 import JoinRoomDto from 'src/model/joinRoom.dto';
 import RoomDto from 'src/model/room.dto';
@@ -12,7 +11,7 @@ export class RoomService {
     constructor(@InjectRepository(RoomDto) private roomRepository: Repository<RoomDto>,
     @InjectRepository(UserDto) private userRepository: Repository<UserDto>,
     @InjectRepository(JoinRoomDto) private joinRoomRepository: Repository<JoinRoomDto>,
-    @InjectRepository(ChatMessageDto) private chatMessageRepository: Repository<Chat>) { }
+    @InjectRepository(ChatMessageDto) private chatMessageRepository: Repository<ChatMessageDto>) { }
 
     async createRoom(roomName: string) {
         return await this.roomRepository.save(Object.setPrototypeOf({roomName}, RoomDto.prototype));
