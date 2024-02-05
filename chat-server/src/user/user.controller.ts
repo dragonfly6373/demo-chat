@@ -1,21 +1,29 @@
-import { Body, Controller, Post, Res } from '@nestjs/common';
+import { Body, Controller, Post, Req, Res, UseGuards } from '@nestjs/common';
 import { Response } from 'express';
-import UserDto from 'src/model/user.dto';
+import { UserInfo } from 'src/model/user.info';
+import { UserService } from './user.service';
+import { LocalGuard } from './local.guard';
 
 @Controller('user')
 export class UserController {
+    constructor(private readonly userService: UserService) {
+
+    }
     @Post("/signUp")
-    signUp(@Res() res: Response, @Body("userInfo") userDto: UserDto) {
-
+    async signUp(@Res() res: Response, @Body("userInfo") userInfo: UserInfo) {
+        console.log("# signUp", arguments);
+        // const saltOrRounds = 10;
+        // const hashedPassword = await bcrypt.hash(userDto.password, saltOrRounds);
+        const data = await this.userService.create(userInfo);
+        res.json(data);
     }
 
+    @UseGuards(LocalGuard)
     @Post("/login")
-    login(@Res() res: Response, @Body("userInfo") userDto: UserDto) {
-
-    }
-
-    @Post("create")
-    create(@Res() res: Response, @Body("userInfo") userDto: UserDto) {
-
+    async login(@Req() req, @Res() res: Response, @Body("loginId") loginId: string) {
+        // console.log("# login", arguments);
+        // const data = await this.userService.authen(loginId);
+        // res.json(data);
+        return req.session;
     }
 }

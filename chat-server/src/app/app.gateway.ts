@@ -15,8 +15,7 @@ import { Chat } from '../model/chat.entity';
         origin: '*',
     },
 })
-export class AppGateway
-    implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
+export class AppGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
     constructor(private appService: AppService) { }
 
     @WebSocketServer() server: Server;

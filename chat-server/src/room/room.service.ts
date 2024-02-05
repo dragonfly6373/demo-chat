@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import ChatMessageDto from 'src/model/chatMessage.dto';
-import JoinRoomDto from 'src/model/joinRoom.dto';
-import RoomDto from 'src/model/room.dto';
-import UserDto from 'src/model/user.dto';
+import {ChatMessageDto} from 'src/model/chatMessage.dto';
+import {JoinRoomDto} from 'src/model/joinRoom.dto';
+import {RoomDto} from 'src/model/room.dto';
+import {UserDto} from 'src/model/user.dto';
 import { Repository } from 'typeorm';
 
 @Injectable()

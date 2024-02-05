@@ -8,22 +8,30 @@ export class RoomController {
 
     @Post('/newRoom')
     async createRoom(@Res() res: Response, roomName: string) {
+        console.log("# createRoom", arguments);
+        // TODO: implementation
         let roomInfo = await this.roomService.createRoom(roomName);
         res.json(roomInfo);
     }
 
     @Get('/joinRoom')
-    requestJoin(@Res() res: Response, roomId: number) {
+    async requestJoin(@Res() res: Response, roomId: number) {
+        console.log("# requestJoin", arguments);
+        // TODO: implementation
 
     }
 
     @Get('/rooms')
-    getAllRoom(@Res() res: Response) {
+    async getAllRoom(@Res() res: Response) {
+        console.log("# getAllRoom", arguments);
+        // TODO: implementation
 
     }
 
     @Get('/history/:roomId')
-    getHistory(@Res() res: Response, @Param("roomId") roomId: number) {
+    async getHistory(@Res() res: Response, @Param("roomId") roomId: number) {
+        console.log("# getHistory", arguments);
+        // TODO: implementation
 
     }
 }

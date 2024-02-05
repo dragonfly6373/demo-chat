@@ -1,4 +1,3 @@
-
 import {
     Entity,
     Column,
@@ -7,17 +6,19 @@ import {
 } from 'typeorm';
 
 @Entity("chat_message")
-export default class ChatMessageDto {
+export class ChatMessageDto {
+    @PrimaryGeneratedColumn("uuid", {name: "id"})
+    id: number;
     @Column({name: "room_id"})
-    room_id: number;
+    roomId: number;
     @Column({name: "message_type"})
-    message_type: number;
+    messageType: number;
     @Column({name: "content"})
     content: string;
     @Column({name: "created_by"})
     createdBy: number;
-    @Column({name: "created_date"})
-    createdDate: number;
+    @Column({type: 'timestamptz', name: "created_date"})
+    createdDate: Date;
     @Column({name: "status"})
     status: number;
 }
