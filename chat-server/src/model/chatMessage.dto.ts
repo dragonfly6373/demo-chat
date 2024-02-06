@@ -2,11 +2,11 @@ import {
     Entity,
     Column,
     PrimaryGeneratedColumn,
-    CreateDateColumn,
 } from 'typeorm';
+import { IChatMessage } from './chatMessage.interface';
 
 @Entity("chat_message")
-export class ChatMessageDto {
+export class ChatMessageDto implements IChatMessage {
     @PrimaryGeneratedColumn("uuid", {name: "id"})
     id: number;
     @Column({name: "room_id"})
