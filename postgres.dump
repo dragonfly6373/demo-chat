@@ -139,6 +139,30 @@ ALTER TABLE public.chat_message OWNER TO postgres;
 COMMENT ON COLUMN public.chat_message.message_type IS 'message|media|';
 
 --
+-- Name: user_rooms_view; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW IF NOT EXISTS public.user_rooms_view ON
+    SELECT join_room.user_id, room.*
+    FROM join_room
+    LEFT JOIN room
+    ON join_room.room_id = room.id;
+
+ALTER VIEW public.user_rooms_view OWNER TO postgres;
+
+--
+-- Name: room_users_view; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW IF NOT EXISTS public.room_users_view ON
+    SELECT join_room.room_id, user.*
+    FROM join_room
+    LEFT JOIN user
+    ON join_room.user_id = user.id;
+
+ALTER VIEW public.room_users_view OWNER TO postgres;
+
+--
 -- PostgreSQL database dump complete
 --
 
